@@ -445,7 +445,7 @@ with tab_detect:
                             os.remove(reencoded)
                             if "error" not in r:
                                 levels_data.append((label, r["score"]))
-                        except subprocess.CalledProcessError:
+                        except (subprocess.CalledProcessError, subprocess.TimeoutExpired):
                             st.warning(f"Re-encoding failed for {label}.")
                 st.session_state.compress_running = False
 
